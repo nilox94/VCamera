@@ -21,7 +21,7 @@ class VCamera(Process):
 
     def setup(self):
         # prepare input camera to capture frames
-        self.in_dev = cv2.VideoCapture(0)#self.in_dev_name)
+        self.in_dev = cv2.VideoCapture(self.in_dev_name)
         ok, im = self.in_dev.read()
         if not ok:
             raise IOError('Unable to read frames from device %s' % self.in_dev_name)
