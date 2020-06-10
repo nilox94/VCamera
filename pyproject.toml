@@ -1,0 +1,68 @@
+[tool.poetry]
+name = "VCamera"
+version = "0.1.0"
+description = "Virtual camera using v4l2-loopback driver"
+authors = ["nilox94 <danilogomez3.14@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+opencv-python = "~=3.4"
+
+[tool.poetry.dev-dependencies]
+black = "^19.10b0"
+flake8-bandit = "^2.1.2"
+flake8-black = "^0.2.0"
+flake8-bugbear = "^20.1.4"
+flake8-docstrings = "^1.5.0"
+flake8-isort = "^3.0.0"
+flakehell = "^0.5.0"
+seed-isort-config = "^2.2.0"
+
+[tool.poetry.extras]
+bottle = ["^0.12.18"]
+
+[tool.black]
+line-length = 88
+target-version = ['py36','py37','py38']
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+      \.git
+    | static
+    | templates
+  )/
+  | v4l2.py
+)
+'''
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+line_length = 88
+
+[tool.pylint.messages_control]
+disable = "C0330,C0326"
+
+[tool.pylint.format]
+max-line-length = 88
+
+[tool.flakehell]
+base = "https://raw.githubusercontent.com/life4/flakehell/master/pyproject.toml"
+max-line-length = 88
+max-complexity = 18
+format = "grouped"
+show_source = false
+
+[tool.flakehell.plugins]
+# TODO: be more specific in LHS
+"*" = [
+  "+B*", "+C*", "+E*", "+F*", "+W*", "+T4*", "+B9*",
+  "-E203", "-E266", "-E501", "-W503", "-F403", "-F401", "-D100"
+]
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
