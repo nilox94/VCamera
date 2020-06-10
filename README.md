@@ -1,17 +1,16 @@
 # VCamera
 
-Manages a virtual camera by transforming the image captured from a real camera.
-Uses opencv to read and transform images from the camera and v4l2-loopback
-to control the virtual camera.
+Manages a virtual camera camera device that transform the image captured from another camera (generally physical).
+Uses `opencv` to read and transform images from the camera and the `v4l2-loopback` Linux kernel module to control the virtual camera.
 
 ## Setup and install
 
-To install v4l2-loopback
+To install v4l2-loopback (in Debian and Ubuntu)
 ```
 ./install-v4l2.sh
 ```
 
-To setup a virtual camera
+To setup a virtual camera (unsing v4l2loopback module)
 ```
 ./setup-cameras.sh
 ```
