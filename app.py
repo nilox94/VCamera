@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
-import cv2
 import numpy as np
 from vcamera import VCamera
-from filters import affine_transform, wierd_grad
 
 
 class MyVCamera(VCamera):
     """
     Slow motion
     """
+
     FRAMES = 10
-    LAMBDA = .2
+    LAMBDA = 0.2
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -21,7 +20,9 @@ class MyVCamera(VCamera):
         if self.prev_frame is None:
             self.prev_frame = bgr_frame
 
-        frame = MyVCamera.LAMBDA * bgr_frame + (1. - MyVCamera.LAMBDA) * self.prev_frame
+        frame = (
+            MyVCamera.LAMBDA * bgr_frame + (1.0 - MyVCamera.LAMBDA) * self.prev_frame
+        )
         self.prev_frame = frame
 
         return frame.astype(np.uint8)
@@ -36,7 +37,6 @@ class MementoCamera(VCamera):
         self.new_memory = []
         self.current_memory = []
 
-
     def transform(self, bgr_frame):
         self.new_memory.append(bgr_frame)
 
@@ -50,7 +50,7 @@ class MementoCamera(VCamera):
             return self.current_memory[-1 - len(self.new_memory)]
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     vcam = MementoCamera(flip=True)
     vcam.start()
     vcam.join()

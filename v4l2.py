@@ -1,3 +1,4 @@
+# flake8: noqa
 # Python bindings for the v4l2 userspace api
 
 # Copyright (C) 1999-2009 the contributors
