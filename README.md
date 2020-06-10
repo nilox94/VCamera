@@ -21,9 +21,9 @@ or ten?
 
 ## Running VCamera
 
-To start a vcamera
+To start a vcamera (assuming /dev/video0 is your capture device and /dev/video1 your virtual camera)
 ```
-./vcamera.py
+sudo ./vcamera.py -i /dev/video0 -o /dev/video1 -f flip sunset
 ```
 
 To display the running vcamera at the browser start the webserver
@@ -41,9 +41,9 @@ and open the url [http://localhost:8080/](http://localhost:8080/).
 The original image can be transformed by overriding the method `transform`
 of class `VCamera` in a new subclass.
 
-For fast development vcamera can be runned and displayed using opencv as in
+For fast development vcamera can be runned and displayed using opencv (`-p`)
 ```
-./example.py
+sudo ./vcamera.py -i /dev/video0 -o /dev/video1 -f flip sunset -p
 ```
 
 Some example filters to use at `transform` can be found at `filters.py`.
