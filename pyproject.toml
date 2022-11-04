@@ -6,7 +6,7 @@ authors = ["nilox94 <danilogomez3.14@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-opencv-python = "~=3.4"
+opencv-python = "~=4.2"
 
 [tool.poetry.dev-dependencies]
 black = "^19.10b0"
